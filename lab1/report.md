@@ -15,7 +15,7 @@
 
 ### 2.1. BPMN-диаграмма
 
-(diagrams/process-bpmn.png)
+![BPMN](diagrams/process-bpmn.png)
 
 BPMN-диаграмма процесса бронирования. Содержит стартовое событие, 
 несколько задач, шлюзы (XOR для проверки наличия номера, AND для 
@@ -23,7 +23,7 @@ BPMN-диаграмма процесса бронирования. Содерж�
 
 ### 2.2. UML Activity Diagram
 
-(diagrams/activity-uml.png)
+![UML Activity](diagrams/activity-uml.png)
 
 UML Activity детализирует шаг «Проверка наличия номера». Содержит 
 начальный узел, действия по вводу параметров и поиску, решение 
@@ -31,7 +31,7 @@ UML Activity детализирует шаг «Проверка наличия �
 
 ### 2.3. Sequence Diagram
 
-(screenshots/sequence.png)
+![Sequence](screenshots/sequence.png)
 
 Sequence Diagram показывает обмен сообщениями между четырьмя 
 участниками: Гостем, Системой бронирования, Базой данных номеров 
@@ -40,13 +40,11 @@ Sequence Diagram показывает обмен сообщениями межд
 
 ### 2.4. Flowchart
 
-(screenshots/flowchart.png)
+![Flowchart](screenshots/flowchart.png)
 
 Flowchart описывает алгоритм расчёта итоговой стоимости бронирования. 
 Содержит два условия (сезонная скидка, статус постоянного клиента) 
 и расчёт итоговой стоимости.
-
----
 
 ## 3. Diff для текстовых и бинарных форматов
 
@@ -55,35 +53,42 @@ diff для текстовых и бинарных форматов.
 
 ### 3.1. Diff для process.bpmn (текстовый XML)
 
-![Diff BPMN](screenshots/diff-bpmn.png)
+![Diff BPMN](screenshots/diff-bpmn.jpg)
 
 Видно конкретные строки XML — какие элементы добавились, какие связи 
 изменились.
 
 ### 3.2. Diff для process-bpmn.png (бинарный)
 
-![Diff PNG](screenshots/diff-png.png)
+![Diff PNG](screenshots/diff-png.jpg)
 
 Git вывел только «Binary files differ» — без деталей.
 
 ### 3.3. Diff для activity.drawio (текстовый XML)
 
-![Diff drawio](screenshots/diff-drawio.png)
+![Diff drawio](screenshots/diff-drawio.jpg)
 
 Также видны конкретные строки XML.
 
 ### 3.4. Diff для activity-uml.png (бинарный)
 
-![Diff PNG UML](screenshots/diff-png-uml.png)
+![Diff PNG UML](screenshots/diff-png-uml.jpg)
 
 «Binary files differ» — без деталей.
 
-### 3.5. Diff для sequence.md (Mermaid, чистый текст)
+### 3.5. Diff для sequence.md (Mermaid)
 
-![Diff Mermaid](screenshots/diff-mermaid.png)
+![Diff Sequence](screenshots/diff-mermaid-sequence.jpg)
 
-Идеальный diff — видно каждое слово, изменившееся в Mermaid-коде. 
-Это самый удобный формат для версионирования.
+Видно, что Git показал построчные изменения — каждое слово. 
+Это демонстрирует удобство текстового формата Mermaid.
+
+### 3.6. Diff для flowchart.md (Mermaid)
+
+![Diff Flowchart](screenshots/diff-mermaid-flowchart.jpg)
+
+Аналогично — построчный diff. Mermaid-файлы отлично 
+сравниваются, потому что это чистый текст.
 
 
 ## 4. Выводы

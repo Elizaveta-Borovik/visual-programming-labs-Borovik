@@ -1,0 +1,48 @@
+[
+    {
+        "id": "a7765cf6f260f203",
+        "type": "inject",
+        "z": "c56c26152df6cd0c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "lab2/Боровик/basic",
+        "payload": "Боровик",
+        "payloadType": "str",
+        "x": 220,
+        "y": 140,
+        "wires": [
+            [
+                "0faaad9cc7d5bfc6"
+            ]
+        ]
+    },
+    {
+        "id": "0faaad9cc7d5bfc6",
+        "type": "debug",
+        "z": "c56c26152df6cd0c",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 240,
+        "wires": []
+    }
+]

@@ -1,0 +1,85 @@
+[
+    {
+        "id": "ff08c8111355c6c3",
+        "type": "inject",
+        "z": "3c2bbab4affc3e12",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "start",
+        "payloadType": "str",
+        "x": 890,
+        "y": 480,
+        "wires": [
+            [
+                "cc7e5eac2b843fca"
+            ]
+        ]
+    },
+    {
+        "id": "cc7e5eac2b843fca",
+        "type": "change",
+        "z": "3c2bbab4affc3e12",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "lab2/Боровик/change",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "changed",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1160,
+        "y": 480,
+        "wires": [
+            [
+                "17e206beb9994499"
+            ]
+        ]
+    },
+    {
+        "id": "17e206beb9994499",
+        "type": "debug",
+        "z": "3c2bbab4affc3e12",
+        "name": "debug change",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1420,
+        "y": 480,
+        "wires": []
+    }
+]

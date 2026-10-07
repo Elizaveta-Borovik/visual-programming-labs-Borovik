@@ -1,0 +1,68 @@
+[
+    {
+        "id": "bc4699e000a47afe",
+        "type": "inject",
+        "z": "2a8014bfd6dd3dce",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "\"test\"",
+        "payloadType": "str",
+        "x": 350,
+        "y": 180,
+        "wires": [
+            [
+                "f45ef9600ecad3f4"
+            ]
+        ]
+    },
+    {
+        "id": "f45ef9600ecad3f4",
+        "type": "function",
+        "z": "2a8014bfd6dd3dce",
+        "name": "function 1",
+        "func": "const numbers = [1, 2, 3, 4, 5];\nlet sum = 0;\n\nfor (let i = 0; i < numbers.length; i++) {\n    sum += numbers[i];\n}\n\nconst result = {\n    original: msg.payload,\n    sum: sum,\n    count: numbers.length,\n    timestamp: new Date().toISOString()\n};\n\nif (sum > 10) {\n    result.status = \"big\";\n} else {\n    result.status = \"small\";\n}\n\nmsg.payload = result;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 300,
+        "wires": [
+            [
+                "069eaa98f3e2ea76"
+            ]
+        ]
+    },
+    {
+        "id": "069eaa98f3e2ea76",
+        "type": "debug",
+        "z": "2a8014bfd6dd3dce",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 380,
+        "wires": []
+    }
+]

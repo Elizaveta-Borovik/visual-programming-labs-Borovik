@@ -1,0 +1,63 @@
+[
+    {
+        "id": "db2b48cf3a4e1743",
+        "type": "inject",
+        "z": "61b798ec64d3a168",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Елизавета\",\"age\":19,\"city\":\"Гродно\"}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "8e4740023cdf40fa"
+            ]
+        ]
+    },
+    {
+        "id": "8e4740023cdf40fa",
+        "type": "template",
+        "z": "61b798ec64d3a168",
+        "name": "template student",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n  \"student\": \"{{payload.name}}\",\n  \"age\": \"{{payload.age}}\",\n  \"city\": \"{{payload.city}}\",\n  \"greeting\": \"Hello, {{payload.name}} from {{payload.city}}!\"\n}\n",
+        "output": "json",
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "98b8c72a4245c69b"
+            ]
+        ]
+    },
+    {
+        "id": "98b8c72a4245c69b",
+        "type": "debug",
+        "z": "61b798ec64d3a168",
+        "name": "debug template",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 160,
+        "wires": []
+    }
+]

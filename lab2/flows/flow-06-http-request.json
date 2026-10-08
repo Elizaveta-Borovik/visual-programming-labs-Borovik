@@ -1,0 +1,68 @@
+[
+    {
+        "id": "06fb235334e748c6",
+        "type": "inject",
+        "z": "8f4c9f94bbcac52e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 190,
+        "y": 220,
+        "wires": [
+            [
+                "49a21b8fc97d40f7"
+            ]
+        ]
+    },
+    {
+        "id": "49a21b8fc97d40f7",
+        "type": "http request",
+        "z": "8f4c9f94bbcac52e",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.github.com/users/octocat",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 410,
+        "y": 220,
+        "wires": [
+            [
+                "6222275020220e2d"
+            ]
+        ]
+    },
+    {
+        "id": "6222275020220e2d",
+        "type": "debug",
+        "z": "8f4c9f94bbcac52e",
+        "name": "debug http",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 220,
+        "wires": []
+    }
+]

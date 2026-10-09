@@ -1,0 +1,64 @@
+[
+    {
+        "id": "244d4018d6e5996d",
+        "type": "inject",
+        "z": "36fd6968afda64bd",
+        "name": "увеличить счётчик",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "tick",
+        "payloadType": "str",
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "5bf0b51feb9c9b0f"
+            ]
+        ]
+    },
+    {
+        "id": "5bf0b51feb9c9b0f",
+        "type": "function",
+        "z": "36fd6968afda64bd",
+        "name": "счётчик через flow context",
+        "func": "let count = flow.get(\"counter\") || 0;\ncount++;\nflow.set(\"counter\", count);\nmsg.payload = {\n    counter: count,\n    message: \"Счётчик увеличен на 1\",\n    timestamp: new Date().toISOString()\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 180,
+        "wires": [
+            [
+                "fbab19ab7cae262f"
+            ]
+        ]
+    },
+    {
+        "id": "fbab19ab7cae262f",
+        "type": "debug",
+        "z": "36fd6968afda64bd",
+        "name": "debug счётчик",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 180,
+        "wires": []
+    }
+]

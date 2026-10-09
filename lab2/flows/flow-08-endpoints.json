@@ -1,0 +1,221 @@
+[
+    {
+        "id": "3dbd3084c7f4ca94",
+        "type": "tab",
+        "label": "2.8 endpoints",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "91b7e41b5a0fa5bb",
+        "type": "http in",
+        "z": "3dbd3084c7f4ca94",
+        "name": "GET /api/text",
+        "url": "/api/text",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "a82de3e7846ad391"
+            ]
+        ]
+    },
+    {
+        "id": "a82de3e7846ad391",
+        "type": "template",
+        "z": "3dbd3084c7f4ca94",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Hello from Node-RED! This is /api/text endpoint.",
+        "output": "str",
+        "x": 380,
+        "y": 200,
+        "wires": [
+            [
+                "14cc72e378d9ac47"
+            ]
+        ]
+    },
+    {
+        "id": "14cc72e378d9ac47",
+        "type": "http response",
+        "z": "3dbd3084c7f4ca94",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 580,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "09b4051f5c1db0e9",
+        "type": "http in",
+        "z": "3dbd3084c7f4ca94",
+        "name": "GET /api/info",
+        "url": "/api/info",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 340,
+        "wires": [
+            [
+                "3ca49cf36853da3a"
+            ]
+        ]
+    },
+    {
+        "id": "3ca49cf36853da3a",
+        "type": "function",
+        "z": "3dbd3084c7f4ca94",
+        "name": "info handler",
+        "func": "msg.payload = {\n    name: \"Боровик Елизавета\",\n    lab: 2,\n    university: \"ГрГУ\",\n    timestamp: new Date().toISOString()\n};\nmsg.headers = {\n    \"Content-Type\": \"application/json; charset=utf-8\"\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "501830783b03cdd0"
+            ]
+        ]
+    },
+    {
+        "id": "501830783b03cdd0",
+        "type": "http response",
+        "z": "3dbd3084c7f4ca94",
+        "name": "",
+        "statusCode": "200",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 560,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "86f80b54f924b693",
+        "type": "http in",
+        "z": "3dbd3084c7f4ca94",
+        "name": "GET /api/items",
+        "url": "/api/items/:id",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 480,
+        "wires": [
+            [
+                "76edb72516ef762a"
+            ]
+        ]
+    },
+    {
+        "id": "76edb72516ef762a",
+        "type": "function",
+        "z": "3dbd3084c7f4ca94",
+        "name": "items handler",
+        "func": "const id = msg.req.params.id;\nconst detail = msg.req.query.detail;\nconst items = {\n    \"1\": { id: 1, name: \"Ноутбук\", price: 1500 },\n    \"2\": { id: 2, name: \"Мышь\", price: 25 },\n    \"3\": { id: 3, name: \"Клавиатура\", price: 75 }\n};\nif (!id || isNaN(id)) {\n    msg.statusCode = 400;\n    msg.payload = {\n        error: \"Bad Request\",\n        message: \"Параметр id должен быть числом\",\n        example: \"/api/items/1\"\n    };\n    msg.headers = { \"Content-Type\": \"application/json; charset=utf-8\" };\n    return msg;\n}\nif (!items[id]) {\n    msg.statusCode = 404;\n    msg.payload = {\n        error: \"Not Found\",\n        message: `Товар с id=${id} не найден`,\n        available: Object.keys(items)\n    };\n    msg.headers = { \"Content-Type\": \"application/json; charset=utf-8\" };\n    return msg;\n}\nmsg.statusCode = 200;\nmsg.payload = {\n    item: items[id],\n    detail: detail === \"full\" ? \"Полная информация\" : \"Краткая информация\"\n};\nmsg.headers = { \"Content-Type\": \"application/json; charset=utf-8\" };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 480,
+        "wires": [
+            [
+                "cb4da1c5b25b8086"
+            ]
+        ]
+    },
+    {
+        "id": "fd68614c9d9a9034",
+        "type": "http response",
+        "z": "3dbd3084c7f4ca94",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 760,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "cb4da1c5b25b8086",
+        "type": "switch",
+        "z": "3dbd3084c7f4ca94",
+        "name": "",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "400",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "404",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 590,
+        "y": 480,
+        "wires": [
+            [
+                "fd68614c9d9a9034"
+            ],
+            [
+                "984aebd415023ec7"
+            ],
+            [
+                "5e6bd4648ac20a62"
+            ]
+        ]
+    },
+    {
+        "id": "984aebd415023ec7",
+        "type": "http response",
+        "z": "3dbd3084c7f4ca94",
+        "name": "",
+        "statusCode": "400",
+        "headers": {},
+        "x": 760,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "5e6bd4648ac20a62",
+        "type": "http response",
+        "z": "3dbd3084c7f4ca94",
+        "name": "",
+        "statusCode": "404",
+        "headers": {},
+        "x": 760,
+        "y": 540,
+        "wires": []
+    }
+]

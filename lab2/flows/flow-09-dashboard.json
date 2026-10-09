@@ -1,0 +1,127 @@
+[
+    {
+        "id": "b73af6573ffa313b",
+        "type": "inject",
+        "z": "c1e9a84e11e1df7e",
+        "name": "датчик температуры",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "$random() * 30 + 10",
+        "payloadType": "jsonata",
+        "x": 220,
+        "y": 180,
+        "wires": [
+            [
+                "a9f20d5d372c5390",
+                "2b52ef278ba73ca6"
+            ]
+        ]
+    },
+    {
+        "id": "a9f20d5d372c5390",
+        "type": "ui_gauge",
+        "z": "c1e9a84e11e1df7e",
+        "name": "",
+        "group": "08a7fa5b4e2f8aaf",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Температура",
+        "label": "°C",
+        "format": "{{value | number:1}} °C",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 460,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2b52ef278ba73ca6",
+        "type": "ui_chart",
+        "z": "c1e9a84e11e1df7e",
+        "name": "",
+        "group": "08a7fa5b4e2f8aaf",
+        "order": 1,
+        "width": "6",
+        "height": "4",
+        "label": "История температуры",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 490,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "08a7fa5b4e2f8aaf",
+        "type": "ui_group",
+        "name": "Датчики",
+        "tab": "f870cde51761e239",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f870cde51761e239",
+        "type": "ui_tab",
+        "name": "Лабораторная 2",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "22ef47e75f4cab33",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]

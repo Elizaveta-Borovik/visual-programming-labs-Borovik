@@ -1,0 +1,126 @@
+[
+    {
+        "id": "87345b0194e9a489",
+        "type": "inject",
+        "z": "21454d128c87a8c7",
+        "name": "записать в файл",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "b324ee95c5f32160"
+            ]
+        ]
+    },
+    {
+        "id": "b324ee95c5f32160",
+        "type": "function",
+        "z": "21454d128c87a8c7",
+        "name": "подготовить данные",
+        "func": "const data = {\n    student: \"Боровик Елизавета\",\n    lab: 2,\n    timestamp: new Date().toISOString(),\n    temperature: Math.round(Math.random() * 30 + 10),\n    note: \"Записано из Node-RED\"\n};\nmsg.payload = JSON.stringify(data, null, 2);\nmsg.filename = \"/data/lab2-data.json\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "969d7aceb8f6246c"
+            ]
+        ]
+    },
+    {
+        "id": "969d7aceb8f6246c",
+        "type": "file",
+        "z": "21454d128c87a8c7",
+        "name": "файл — запись",
+        "filename": "/data/lab2-data.json",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "utf8",
+        "x": 620,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c743061f4ed60a8e",
+        "type": "inject",
+        "z": "21454d128c87a8c7",
+        "name": "прочитать из файла",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 160,
+        "y": 300,
+        "wires": [
+            [
+                "7d809cd092cc7ad2"
+            ]
+        ]
+    },
+    {
+        "id": "7d809cd092cc7ad2",
+        "type": "file in",
+        "z": "21454d128c87a8c7",
+        "name": "файл — чтение",
+        "filename": "/data/lab2-data.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 380,
+        "y": 300,
+        "wires": [
+            [
+                "54e5a9ca274687f7"
+            ]
+        ]
+    },
+    {
+        "id": "54e5a9ca274687f7",
+        "type": "debug",
+        "z": "21454d128c87a8c7",
+        "name": "debug файл",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 300,
+        "wires": []
+    }
+]

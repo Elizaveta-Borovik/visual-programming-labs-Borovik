@@ -48,7 +48,7 @@ Bubble сгенерировал каркас приложения:
 - Data Types: `User`, `Питомец`, `Дневниковая запись`
 - Готовые workflows: Auth login / signup / open / error
 
-**Скриншот:** `lab3/screenshots/01-prompt.png`
+![Скриншот генерации каркаса](../screenshots/01-prompt.png)
 
 ---
 
@@ -83,14 +83,27 @@ Build Guide: **«Add and manage pets»** на https://bubble.io/home/buildguides
 
 ### Скриншоты «до» и «после»
 
-- До: главная страница `index` без формы добавления питомца → `screenshots/02-before.png`
-- После: новая страница `add-pet` с формой → `lab3/screenshots/02-after.png`
+**До:** главная страница `index` без формы добавления питомца
+
+![До](../screenshots/02-before.png)
+
+**После:** новая страница `add-pet` с формой
+
+![После](../screenshots/02-after.png)
 
 ### Скриншоты гайдов
 
-- `lab3/screenshots/02-buildguide-1.png` — список фич от Bubble
-- `lab3/screenshots/02-buildguide-2.png` — открытый гайд «Add and manage pets»
-- `lab3/screenshots/02-buildguide-3.png` — блок DESIGN: структура страницы Add Pet
+**Список фич от Bubble:**
+
+![Список фич](../screenshots/02-buildguide-1.png)
+
+**Открытый гайд «Add and manage pets»:**
+
+![Гайд](../screenshots/02-buildguide-2.png)
+
+**Блок DESIGN: структура страницы Add Pet:**
+
+![Блок DESIGN](../screenshots/02-buildguide-3.png)
 
 ---
 
@@ -109,7 +122,7 @@ Build Guide: **«Add and manage pets»** на https://bubble.io/home/buildguides
 - Создана Global variable `primary-color` типа Color (жёлтый/оранжевый)
 - Переменная применена к фону кнопки «Завести дневник» на странице `index`
 
-**Скриншот:** `lab3/screenshots/03-global-variable.png`
+![Global variable](../screenshots/03-global-variable.png)
 
 ### 3.3. Новый стиль
 
@@ -118,7 +131,7 @@ Build Guide: **«Add and manage pets»** на https://bubble.io/home/buildguides
 - Стиль применён к кнопкам (например, «Add Pet» на странице `add-pet`)
 - Стиль помечен как `Default` для всех кнопок
 
-**Скриншот:** `lab3/screenshots/04-style.png`
+![Стиль PrimaryButton](../screenshots/04-style.png)
 
 ### 3.4. Готовый компонент из библиотеки
 
@@ -127,7 +140,7 @@ Build Guide: **«Add and manage pets»** на https://bubble.io/home/buildguides
 - Label: «Напоминать о прививках»
 - Preset status: Unchecked
 
-**Скриншот:** `lab3/screenshots/05-component.png`
+![Компонент Checkbox](../screenshots/05-component.png)
 
 ---
 
@@ -177,15 +190,19 @@ AI предложил сущность `HealthRecord` со следующими 
 
 6 разных типов полей — требование «минимум 3» выполнено с запасом.
 
-**Скриншоты:**
-- `lab3/screenshots/06-data-type.png` — типы данных и поля
-- `lab3/screenshots/07-data-records.png` — 3 записи HealthRecord, созданные вручную через App Data
+**Типы данных и поля HealthRecord:**
+
+![Data Type HealthRecord](../screenshots/06-data-type.png)
+
+**3 записи HealthRecord, созданные вручную через App Data:**
+
+![Записи HealthRecord](../screenshots/07-data-records.png)
 
 #### Записи (созданы вручную через App Data)
 
-1. Прививка от бешенства — Вакцинация, 10.10.2026, доза 1, завершено 
-2. Плановый осмотр — Визит к ветеринару, 10.12.2026, доза 0, не завершено 
-3. Антибиотик, курс 5 дней — Лекарство, 10.02.2026, доза 2, завершено 
+1. Прививка от бешенства — Вакцинация, 10.10.2026, доза 1, завершено
+2. Плановый осмотр — Визит к ветеринару, 10.12.2026, доза 0, не завершено
+3. Антибиотик, курс 5 дней — Лекарство, 10.02.2026, доза 2, завершено
 
 ### 4.2. Workflows: полный CRUD
 
@@ -203,7 +220,7 @@ UI создан с использованием AI на новой страни�
   - Pet = Add Pet Dropdown's value
 - **Step 2:** Reset relevant inputs
 
-**Скриншот:** `lab3/screenshots/08-workflow-create.png`
+![Create workflow](../screenshots/08-workflow-create.png)
 
 #### Read — Repeating Group на странице `health-records`
 
@@ -226,7 +243,7 @@ Repeating Group со списком всех HealthRecord. Data source: `Search 
 - **Step 2:** Hide Edit Popup
 - **Step 3:** Reset relevant inputs
 
-**Скриншот:** `lab3/screenshots/09-workflow-update.png`
+![Update workflow](../screenshots/09-workflow-update.png)
 
 #### Delete — workflow `Del confirm`
 
@@ -235,17 +252,17 @@ Repeating Group со списком всех HealthRecord. Data source: `Search 
   - To delete: Del Popup's HealthRecord
 - **Step 2:** Hide Del Popup
 
-**Скриншот:** `lab3/screenshots/10-workflow-delete.png`
+![Delete workflow](../screenshots/10-workflow-delete.png)
 
 #### Проверка в Preview
 
 Все 4 действия проверены в Preview на странице `health-records`:
-- Добавление новой записи через форму — работает ✅
-- Отображение списка записей — работает ✅
-- Редактирование существующей записи через попап — работает ✅
-- Удаление записи через попап подтверждения — работает ✅
+- Добавление новой записи через форму — работает
+- Отображение списка записей — работает
+- Редактирование существующей записи через попап — работает
+- Удаление записи через попап подтверждения — работает
 
-**Скриншот Preview:** `lab3/screenshots/08-preview.png`
+![Проверка в Preview](../screenshots/08-preview.png)
 
 ---
 

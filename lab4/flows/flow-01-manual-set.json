@@ -1,0 +1,95 @@
+{
+  "name": "flow-01-manual-set",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fb2eee5c-ab0a-4a57-91ea-3e8682ccc4d8",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "68faa57a-474b-4ad8-95cc-2cedd4125738",
+              "name": "payload",
+              "value": "Borovik",
+              "type": "string"
+            },
+            {
+              "id": "f7c05395-1db2-498a-ab4a-e77a106c1423",
+              "name": "topic",
+              "value": "lab4/Borovik/basic",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "dd2322e0-d8db-4139-b983-0079778cf3cc",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $input.all();\nconsole.log('Данные из Set:', JSON.stringify(data, null, 2));\nreturn data;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "175f60d6-f042-425e-a3a7-802b5926f1dc",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "225f923d-eef2-4075-b381-78586b451ce3",
+  "meta": {
+    "instanceId": "c98878bb599670d1e02475e85c83cdf7a5f287448257b73cf27fe795709ae7fb"
+  },
+  "nodeGroups": [],
+  "id": "HC2pKLaRCylMxZVS",
+  "tags": []
+}

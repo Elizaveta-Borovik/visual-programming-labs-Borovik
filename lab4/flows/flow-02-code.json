@@ -1,0 +1,77 @@
+{
+  "name": "flow-02-code",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "26ad8b21-2a1b-4443-9747-27ead29e6f07",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = [10, 20, 30, 40, 50];\nlet total = 0;\n\nfor (let i = 0; i < items.length; i++) {\n  total = total + items[i];\n}\n\nlet category;\nif (total > 100) {\n  category = 'big';\n} else {\n  category = 'small';\n}\n\nconst result = {\n  payload: 'Borovik',\n  sum: total,\n  count: items.length,\n  category: category,\n  itemsList: items\n};\n\nreturn [{ json: result }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "85ce2fdf-e7c7-43c3-a03f-9f486bfe90f4",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ],
+      "id": "6907d3e9-e6ea-4d6e-9367-192357b6c709",
+      "name": "No Operation, do nothing"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "b63292a1-55f8-499d-af55-f31e123ab052",
+  "meta": {
+    "instanceId": "c98878bb599670d1e02475e85c83cdf7a5f287448257b73cf27fe795709ae7fb"
+  },
+  "nodeGroups": [],
+  "id": "zPwwSVhhX7GgLsgc",
+  "tags": []
+}

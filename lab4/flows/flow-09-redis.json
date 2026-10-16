@@ -1,0 +1,96 @@
+{
+  "name": "flow-09-redis",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8fe3dfd8-b9bb-4239-9315-3247bbbd2b0c",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "borovik",
+        "value": "hello from n8n"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "11c2fad2-2a21-4e06-8d90-ae77c96d7b7a",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "NvyHRX5W7INhyvbc",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "borovik",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ],
+      "id": "9d7d966e-a604-4d5a-a091-d9f376fbfd91",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "NvyHRX5W7INhyvbc",
+          "name": "Redis account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "8e7746f6-2c6e-43a2-bed0-393c5e3fa77f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c98878bb599670d1e02475e85c83cdf7a5f287448257b73cf27fe795709ae7fb"
+  },
+  "nodeGroups": [],
+  "id": "u9YCFzVWJMA2VCi9",
+  "tags": []
+}

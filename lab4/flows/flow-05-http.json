@@ -1,0 +1,86 @@
+{
+  "name": "flow-05-http",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "c98eeacf-e6b4-42ec-ab48-102bfd513e28",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://catfact.ninja/fact",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "7861f0ae-4cc5-40e3-ace1-1caa910a1d45",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "jsCode": "const response = $input.first().json;\n\nconst result = {\n  payload: 'Borovik',\n  source: 'catfact.ninja',\n  fact: response.fact,\n  length: response.length\n};\n\nreturn [{ json: result }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "031cbe90-8566-4522-a574-b1712a57ad10",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "875f9c5f-2ffc-4517-bf8a-4a10ab2fd6dc",
+  "meta": {
+    "instanceId": "c98878bb599670d1e02475e85c83cdf7a5f287448257b73cf27fe795709ae7fb"
+  },
+  "nodeGroups": [],
+  "id": "vnJQtHJ6kHiNPoPq",
+  "tags": []
+}

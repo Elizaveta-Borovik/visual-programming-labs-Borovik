@@ -286,6 +286,38 @@ docker exec -it redis redis-cli ping
 **Файлы:** `flows/flow-10-redis.json`
 
 ---
+## Часть 4. Ачивки
+
+### Ачивка 4.4. Туннелирование через Serveo
+
+**Цель:** Получить публичный доступ к n8n, запущенному на localhost.
+
+**Инструмент:** Serveo (https://serveo.net) — бесплатный сервис туннелирования через SSH. Не требует установки и регистрации.
+
+**Команда:**
+
+```bash
+ssh -p 443 -R 80:localhost:5678 serveo.net
+```
+
+**Результат:** Получен публичный URL:
+
+```
+https://b76785b9f38a2579-109-126-148-85.serveousercontent.com
+```
+
+Трафик с публичного URL перенаправляется на локальный n8n (порт 5678). Публичный доступ работает — n8n открывается в браузере через интернет, workflow `flow-01-manual-set` выполняется через публичный URL.
+
+**Скриншоты:**
+
+![serveo-tunnel](../screenshots/11-serveo-tunnel.png)
+
+![serveo-public-url](../screenshots/12-serveo-public-url.png)
+
+![serveo-workflow](../screenshots/13-serveo-workflow.png)
+
+---
+
 ## Часть 5. Выводы
 
 В ходе лабораторной работы я освоила платформу n8n как low-code инструмент автоматизации. Научилась:

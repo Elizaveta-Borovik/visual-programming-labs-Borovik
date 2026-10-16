@@ -1,0 +1,63 @@
+{
+  "name": "flow-06-schedule",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ba12008c-ea3c-461b-9835-dda9b5a3ad29",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "const now = new Date();\n\nconst result = {\n  payload: 'Borovik',\n  triggeredAt: now.toISOString(),\n  localTime: now.toLocaleString('ru-RU'),\n  schedule: 'every 5 minutes'\n};\n\nreturn [{ json: result }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "99055c81-0544-4b9b-b125-c0b88d48408b",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "af9e5399-c231-4d9c-bb60-7b164990053b",
+  "meta": {
+    "instanceId": "c98878bb599670d1e02475e85c83cdf7a5f287448257b73cf27fe795709ae7fb"
+  },
+  "nodeGroups": [],
+  "id": "dQaYE9Sb8Tuphtok",
+  "tags": []
+}
